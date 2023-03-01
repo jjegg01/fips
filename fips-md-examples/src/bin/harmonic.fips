@@ -1,0 +1,27 @@
+particle PointLike {
+    x : mut position,
+    v : mut [f64; NDIM],
+    F : mut [f64; NDIM],
+    V : mut f64,
+    m: f64
+}
+
+interaction spring (p1: PointLike, p2: PointLike) for |rvec| = r < CUTOFF {
+    quantity harmonicforce -[sum]-> (F, -F) {
+        -1.0 * K * (L0/r - 1.0) * rvec
+    }
+
+    quantity harmonicpotential -[sum]-> (V, V) {
+        0.5 * 0.5 * K * (r-L0) * (r-L0)
+    }
+}
+
+simulation VerletSim {
+    default particle PointLike;
+    step {
+        v = v + 0.5 * F / m * DT;
+        x = x + v * DT;
+        update spring;
+        v = v + 0.5 * F / m * DT;
+    }
+}

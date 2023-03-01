@@ -1,0 +1,28 @@
+[package]
+name = "fips-md"
+version = "0.3.0"
+authors = ["Julian Jeggle <julian.jeggle@uni-muenster.de>", "Raphael Wittkowksi <raphael.wittkowski@uni-muenster.de>"]
+edition = "2021"
+license = "GPL-2.0-only"
+categories = ["science", "simulation"]
+keywords = ["particle dynamics", "molecular dynamics"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+lazy_static = "1.4"
+llvm-sys = {version = "140", features = ["strict-versioning"]}
+libc = "0.2"
+num = "0.4"
+peg = "0.8"
+slotmap = "1.0"
+anyhow = "1.0"
+bytemuck = "1.9"
+aligned_box = "0.2"
+crossbeam = "0.8"
+rayon = "1.5"
+strum = "0.24"
+strum_macros = "0.24"
+rand = "0.8"
+rand_distr = "0.4"
+rand_xoshiro = "0.6"

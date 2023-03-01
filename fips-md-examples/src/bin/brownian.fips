@@ -1,0 +1,14 @@
+// Simple Euler-Maruyama integrator for point-like particles under Brownian dynamics
+
+particle PointLike {
+    x : mut position,
+    F : mut [f64; NDIM]
+}
+
+simulation BrownianDynamics {
+    default particle PointLike;
+    step {
+        x[0] = x[0] + sqrt(2.0 * K_B * TEMP * DT * GAMMA_X_INV) * random_normal();
+        x[1] = x[1] + sqrt(2.0 * K_B * TEMP * DT * GAMMA_X_INV) * random_normal();
+    }
+}

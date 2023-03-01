@@ -1,0 +1,9 @@
+[workspace]
+
+members = [
+    "fips-md",
+    "fips-md-examples"
+]
+
+[profile.release]
+debug = true

@@ -1,0 +1,66 @@
+// Simple Euler integrator for point-like particles
+
+// Format for a particle:
+particle PointLike {
+    // Position is special and cannot be redefined, but aliased (array specifier is not allowed,
+    // as position is always NDIM dimensional)
+    x : mut position,
+    v : mut [f64; NDIM], // NDIM is dimensionality of problem
+    F : mut [f64; NDIM], // Quantities bound to interaction calculations later also need to be declared
+    mass: f64            // Constants have to be defined in Rust code (can be either per-particle or
+                         // per-type)
+}
+
+// Format for an interaction block:
+// The "dyn" marks an interaction between the first type and all types extending the second
+// (similar to the meaning of dyn in Rust)
+// Here we also bind names to the two interacting particles so we can access their members
+// (i.e. the charge for E/M interactions)
+interaction myinteraction (p1: PointLike, p2: PointLike) for r < CUTOFF {
+    // Sole argument is the distance (commonly used and already calculated in neighbor checking)
+    // (p1 and p2 can be used too, obviously)
+    // Syntax: quantity <name> -[<reduction method>]-> (<member in first>, <negation?> <member in second>) { <body> }
+    quantity myforce -[sum]-> (F, -F) {
+        // Rust like expression syntax
+        // This code calculates the force derived from a WCA potential
+        let quot: f64 = SIGMA/r;
+        let fac1: f64 = quot*quot*quot;
+        fac1 = fac1*fac1;
+        let fac2: f64 = fac1;
+        fac1 = fac1*fac1;
+        let scale: f64 = 4.0*EPSILON*(fac1-fac2)+EPSILON;
+        scale * (p1.x-p2.x)/r
+    }
+}
+// Interactions are always mutual (this is enforced in syntax to avoid accidental violations of e.g.
+// Newton's third law)!
+
+// Types of value reduction:
+// * sum: (Vector) sum all contributions together
+
+// Simulation block
+simulation MySim {
+    // Indicate that PointLike is the default particle for step and once blocks
+    default particle PointLike;
+    // Once blocks are executed once in the given timestep
+    once 0 {
+
+    }
+    // Step blocks contain a single time step
+    // Multiple step blocks can be defined in one simulation, so they are interleaved as necessary
+    // Step blocks are executed every x timesteps (default is 1, i.e. every timestep):
+    // step x {...}
+    // If multiple step blocks are to be executed in the same timestep, they are executed in the order of definition
+    step { 
+        // This block can be omitted, since PointLike is the default particle type
+        particle PointLike {
+            update myinteraction; // This causes all quantities of myinteraction to be updated across all processors
+            // All members of the particle are accessible without extra scoping
+            // Members bound in interactions are technically write-accessible, but this should issue a warning
+            // since their value will be overwritten by any update command
+            v = v + F / mass * DT; // Euler step for velocity (DT is the timestep constant)
+            x = x + v * DT;
+            call mycallback;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+[package]
+name = "fips-md-examples"
+version = "0.3.0"
+authors = ["Julian Jeggle <julian.jeggle@uni-muenster.de>", "Raphael Wittkowksi <raphael.wittkowski@uni-muenster.de>"]
+edition = "2021"
+license = "GPL-2.0-only"
+
+[dependencies]
+anyhow = "1.0"
+rand = "0.8"
+rand_xoshiro = "0.6"
+fips-md = { path = "../fips-md" }
+ndarray = "0.15.4"
+ndarray-npy = "0.8.1"
