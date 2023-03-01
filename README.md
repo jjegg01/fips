@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6757615.svg)](https://doi.org/10.5281/zenodo.6757615)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7689625.svg)](https://doi.org/10.5281/zenodo.7689625)
 [![crates.io](https://img.shields.io/crates/v/fips_md.svg)](https://crates.io/crates/fips_md)
 
 FIPS - The Fearlessly Integrating Particle Simulator
