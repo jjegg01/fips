@@ -5,7 +5,8 @@ authors = ["Julian Jeggle <julian.jeggle@uni-muenster.de>", "Raphael Wittkowksi 
 edition = "2021"
 license = "GPL-2.0-only"
 categories = ["science", "simulation"]
-keywords = ["particle dynamics", "molecular dynamics"]
+keywords = ["molecular-dynamics"]
+description = "A framework for simulating arbitrary particle dynamics"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
