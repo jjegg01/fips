@@ -66,7 +66,9 @@ As a software project, FIPS is still very young. While it technically allows you
 
 Why "fearless"?
 ---------------
-To exploit the full capabilities of modern hardware you usually need to try and parallelize computation-heavy applications (such as particle simulations). However, parallel programming is notoriously hard to get right and often introduces subtle bugs in the form of race conditions into your program. The situation is particularly bad when it comes to a special class of race conditions called *data races*. In (Safe) Rust, great care was taken to design the language in such a way that these errors cannot ever occur, thus allowing you to create parallel programs without fear of running into them. This "fearless concurrency" was a major inspiration for the creation of FIPS and as such we pay it homage in the name of the software.
+To exploit the full capabilities of modern hardware you usually need to try and parallelize computation-heavy applications (such as particle simulations). However, parallel programming is notoriously hard to get right and often introduces subtle bugs in the form of race conditions into your program. The situation is particularly bad when it comes to a special class of race conditions called *data races*[^2]. In (Safe) Rust, great care was taken to design the language in such a way that these errors cannot ever occur, thus allowing you to create parallel programs without fear of running into them. This "fearless concurrency" was a major inspiration for the creation of FIPS and as such we pay it homage in the name of the software.
+
+[^2]: We use the same semantics as Rust here, i.e., a data race happens when two or more threads try to access the same memory location with one of the threads writing and without any synchronization in place. Check out the [corresponding section in the Rustonomicon](https://doc.rust-lang.org/nomicon/races.html) for more details. 
 
 What about version 0.1 and 0.2?
 -------------------------------
