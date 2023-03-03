@@ -67,3 +67,7 @@ As a software project, FIPS is still very young. While it technically allows you
 Why "fearless"?
 ---------------
 To exploit the full capabilities of modern hardware you usually need to try and parallelize computation-heavy applications (such as particle simulations). However, parallel programming is notoriously hard to get right and often introduces subtle bugs in the form of race conditions into your program. The situation is particularly bad when it comes to a special class of race conditions called *data races*. In (Safe) Rust, great care was taken to design the language in such a way that these errors cannot ever occur, thus allowing you to create parallel programs without fear of running into them. This "fearless concurrency" was a major inspiration for the creation of FIPS and as such we pay it homage in the name of the software.
+
+What about version 0.1 and 0.2?
+-------------------------------
+Designing programming languages is hard. To make matters worse, early mistakes tend to stick around for long times because of backwards compatibility (after all, breaking the code of other people in major ways is not exactly polite). We iterated through multiple designs before arriving at the first version we were satisfied with. To maintain consistency with our internal development environments, the version history of FIPS starts at version 0.3.
