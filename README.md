@@ -1,4 +1,5 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7689625.svg)](https://doi.org/10.5281/zenodo.7689625)
+[![Funding provided by DFG Project ID 433682494 - SFB 1459](https://img.shields.io/badge/DFG%20funded-Project%20ID%20433682494%20--%20SFB%201459%20-blue)](https://gepris.dfg.de/gepris/projekt/433682494?context=projekt&task=showDetail&id=433682494&)
 [![crates.io](https://img.shields.io/crates/v/fips_md.svg)](https://crates.io/crates/fips_md)
 [![project chat](https://img.shields.io/badge/zulip-join_chat-brightgreen.svg)](https://fips-md.zulipchat.com)
 
