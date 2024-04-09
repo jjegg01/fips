@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: If you use this software, please cite both the article from preferred-citation and the software itself.
+title: FIPS
+authors:
+  - family-names: Jeggle
+    given-names: Julian
+    orcid: "https://orcid.org/0000-0001-7220-6081"
+  - family-names: Wittkowski
+    given-names: Raphael
+    orcid: "https://orcid.org/0000-0003-4881-9173"
+version: 0.3.0
+date-released: "2023-03-01"
+license: GPL-2.0-only
+repository-code: https://github.com/jjegg01/fips
+identifiers:
+  - description: This is the collection of archived snapshots of all versions of FIPS
+    type: doi
+    value: 10.5281/zenodo.7689625
+  - description: This is the archived snapshot of version 0.3.0 of FIPS
+    type: doi
+    value: 10.5281/zenodo.7689626
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Jeggle
+      given-names: Julian
+      orcid: "https://orcid.org/0000-0001-7220-6081"
+    - family-names: Wittkowski
+      given-names: Raphael
+      orcid: "https://orcid.org/0000-0003-4881-9173"
+  title: "Generic framework for data-race-free many-particle simulations on shared memory hardware"
+  year: 2023
+  identifiers:
+    - type: doi
+      value: 10.48550/arXiv.2302.14170
